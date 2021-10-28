@@ -1,31 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Home from './components/home';
 import Drinks from './components/drinks';
-
+import Liquors from './components/liqours';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drinks: [],
-    }
-  }
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/drinks")
-      .then(response => response.json())
-      .then(drinks => this.setState({ drinks }));
   }
-
-
 
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
-        <Drinks drinks={this.state.drinks} />
+        <Home />
+        <Drinks />
+        <Liquors />
       </div>
     );
   }
 }
-
-export default App;
+  
+export default connect()(App);
